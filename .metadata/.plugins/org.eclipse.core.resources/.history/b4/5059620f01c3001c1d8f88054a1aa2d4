@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class EncryptNumber {
+
+	public static void main(String[] args) {
+		
+//		자연수 암호화
+		
+		System.out.println("*ENCRYPT YOUR NUMBER*\nPress number (ONLY NATURAL NUMBER) ▼"
+							+ "\n※If you want to exit, press '0'");
+		Scanner sc = new Scanner(System.in);
+		
+		for (;;) {
+			int user = sc.nextInt();
+			
+			if (user > 0) {
+				int lock = (int)(Math.sqrt(user) * 1000) - 2;
+				System.out.println(lock);
+			}
+			else if (user == 0) {
+				break;
+			}
+			else
+				System.out.println("Please recheck your input data");
+			
+		}//end of for
+		
+		System.out.println("Exit");
+		sc.close();
+		
+	}//end of main
+	
+}//end of class
