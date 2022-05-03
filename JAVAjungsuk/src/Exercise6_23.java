@@ -3,16 +3,17 @@
 public class Exercise6_23 {
 	
 	static int max(int[] arr) {
-		if (arr.length == 0 || arr == null) {
+		
+		if (arr.length == 0) {
 			return -999999;
 		}
 		else {
 			int max = 0;
-			for(int i = 0; i < arr.length; i++) {
-				
+			for(int j = 0; j < arr.length; j++) {
+				if(arr[j] > max)
+					max = arr[j];
 			}
-			
-			return 0;
+			return max;
 		}
 	} // end of max
 	

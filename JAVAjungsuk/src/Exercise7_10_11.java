@@ -1,7 +1,7 @@
 class MyTv2 {
 	boolean isPowerIn;
-	int channel;
-	int volume;
+	private int channel;
+	private int volume;
 	
 	final int MAX_VOLUME = 100;
 	final int MIN_VOLUME = 0;
@@ -11,13 +11,14 @@ class MyTv2 {
 	int[] prevCh;
 	
 	public void gotoPrevChannel() {
+		
 	}
 	
+	public void setChannel(int c) {
+		this.channel = c;
+	}
 	public int getChannel() {
 		return channel;
-	}
-	public void setChannel(int channel) {
-		this.channel = channel;
 	}
 	public int getVolume() {
 		return volume;
