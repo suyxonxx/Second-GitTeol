@@ -8,6 +8,8 @@ class MyTv2 {
 	final int MAX_CHANNEL = 100;
 	final int MIN_CHANNEL = 1;
 	
+	int[] prevCh;
+	
 	public void gotoPrevChannel() {
 	}
 	
