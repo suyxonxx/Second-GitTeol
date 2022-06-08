@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#wrap{
+	width:971px; /*참고: 1024×768로 해상도를 맞추어서 설계됨.*/
+	margin:0; margin-left:auto; margin-right:auto; /*가운데 정렬을 위한 바깥쪽 여백 설정*/
+}
+h1{
+	color:green; /*글 색상*/
+}
+table{
+	width:100%;
+	border-collapse:collapse;
+	font-size:12px;
+	line-height:24px; /*줄 간격*/
+}
+table th, td{
+	border:#DDD solid 1px; /*경계선:색상 스타일 굵기*/
+	padding:5px; /*안쪽 여백*/
+}
+th{
+	background:yellowgreen; /*배경색*/
+	width:120px;
+}
+img{
+	width:220px; height:300px;
+}
+a{
+	text-decoration:none; color:black;
+}
+a:hover{
+	text-decoration:underline; color:green;
+}
