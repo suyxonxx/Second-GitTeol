@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" type="text/css" href="css/shopping.css">
+<link rel="stylesheet" type="text/css" href="../css/shopping.css">
 </head>
 <body>
 	<div id="wrap" align="center">
@@ -29,10 +29,13 @@
 				<tr class="record">
 					<td>${board.num}</td>
 					<td>
-						<a href="">
+						<a href="BoardServlet?command=board_view&num=${board.num}">
 						${board.title}
 						</a>
 					</td>
+					<td>${board.name}</td>
+					<td><fmt:formatDate value="${board.writedate}"/></td>
+					<td>${board.readcount}</td>
 				</tr>
 			</c:forEach>
 		</table>
