@@ -1,8 +1,6 @@
 package com.saeyan.controller;
 
-import com.saeyan.controller.action.Action;
-import com.saeyan.controller.action.BoardListAction;
-import com.saeyan.controller.action.BoardWriteFormAction;
+import com.saeyan.controller.action.*;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -24,7 +22,7 @@ public class ActionFactory {
 		} else if(command.equals("board_write_form")) {
 			action = new BoardWriteFormAction();
 		} else if(command.equals("board_write")) {
-			action = new BoardListAction();
+			action = new BoardWriteAction();
 		}
 		return action;
 	}

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.saeyan.dao.BoardDAO;
 import com.saeyan.dto.BoardVO;
 
-public class BoardViewAction implements Action {
+public class BoardWriteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardVO bvo = new BoardVO();
@@ -21,8 +21,12 @@ public class BoardViewAction implements Action {
 		bvo.setContent(request.getParameter("content"));
 		
 		BoardDAO bdao = BoardDAO.getInstance();
-		bdao.insertBoard(bvo);
+		boolean flag = bdao.insertBoard(bvo);
 		
-		new BoardListAction().execute(request, response);
+		if(flag == true) {
+			new BoardListAction().execute(request, response);
+		} else {
+			response.sendRedirect("/BoardServlet?command=board_write_form");
+		}
 	}
 }

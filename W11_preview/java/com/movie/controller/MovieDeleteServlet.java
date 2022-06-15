@@ -1,4 +1,4 @@
-package com.saeyan.controller;
+package com.movie.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,30 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.saeyan.controller.action.Action;
+import com.movie.dao.MovieDAO;
+import com.movie.dto.MovieVO;
 
-@WebServlet("/BoardServlet")
-public class BoardServlet extends HttpServlet {
+@WebServlet("/movieDelete.do")
+public class MovieDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public BoardServlet() {
-        super();
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String command = request.getParameter("command");
-		System.out.println("BoardServlet에서 요청을 받음을 확인 : " + command);
+		String code = request.getParameter("code");
+		MovieDAO dao = MovieDAO.getInstance();
+		MovieVO vo = dao.selectMovieByCode(code);
 		
-		ActionFactory af = ActionFactory.getInstance();
-		Action action = af.getAction(command);
-		
-		if(action != null) {
-			action.execute(request, response);
-		}
+		request.setAttribute("movie", vo);
+		request.getRequestDispatcher("jsp/movieDelete.jsp").forward(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		doGet(request, response);
+		
+		String code = request.getParameter("code");
+		MovieDAO dao = MovieDAO.getInstance();
+		
+		dao.movieDelete(code);
+		response.sendRedirect("movieList.do");
 	}
 }
